@@ -22,10 +22,15 @@ const NewExpense = (props) => {
     setDisplayInput(true);
   };
 
+  let displayExpenseForm = <button onClick={showFormDisplayHandler}>Add New Expense</button>
+
+  if (displayInput === true) {
+      displayExpenseForm = <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancel={hideInputFormHandler}/>
+  }
+
   return (
     <div className="new-expense">
-        {!displayInput && <button onClick={showFormDisplayHandler}>Add New Expense</button>}
-        {displayInput && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancel={hideInputFormHandler}/> }
+        {displayExpenseForm}
     </div>
   );
 };
